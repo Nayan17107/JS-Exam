@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f2f4f8;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #fff;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #recipeContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .recipe-card {
+            width: 260px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .recipe-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .recipe-card h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .recipe-card p {
+            font-size: 14px;
+            margin: 6px 0;
+            color: #555;
+        }
+
+        .recipe-card button {
+            background-color: #ff4d4d;
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        .recipe-card button:hover {
+            background-color: #d93636;
+        }
+
+        #searchform {
+            background: #fff;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 25px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .recipe-card {
+                width: 90%;
+            }
+
+            form, #searchform {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form id="addrecipe">
+        <h1>Recipe Book</h1>
+
+        <label>Recipe Title:</label>
+        <input placeholder="Title" id="title" required />
+
+        <label>IMG URL:</label>
+        <input placeholder="Img URL" id="img" required>
+
+        <label>Ingredients:</label>
+        <textarea placeholder="Ingredients" id="ingredients" required></textarea>
+
+        <label>Price:</label>
+        <input placeholder="Price" id="price" required />
+
+        <button id="add">Add Recipe</button>
+        <button type="button" id="search">Search Recipe</button>
+    </form>
+
+    <form id="editrecipe" style="display: none;">
+        <h1>Edit Recipe</h1>
+
+        <label>Recipe Title:</label>
+        <input placeholder="Title" id="edittitle" required />
+
+        <label>IMG URL:</label>
+        <input placeholder="Img URL" id="editimg" required>
+
+        <label>Ingredients:</label>
+        <textarea placeholder="Ingredients" id="editingredients" required></textarea>
+
+        <label>Price:</label>
+        <input placeholder="Price" id="editprice" required />
+
+        <button id="add">Update Recipe</button>
+    </form>
+
+    <div id="searchform" style="display: none;">
+        <h2>Search Recipe</h2>
+        <input type="text" id="searchtitle" placeholder="Enter Title">
+        <input type="number" id="searchprice" placeholder="Enter Price">
+        <button id="searchrecipe">Search</button>
+    </div>
+
+    <div id="recipeContainer"></div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
